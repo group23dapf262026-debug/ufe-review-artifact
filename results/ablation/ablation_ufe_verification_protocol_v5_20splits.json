@@ -1,0 +1,176 @@
+{
+  "protocol_id": "anonymous-ablation-ufe-verification-v5-20splits",
+  "status": "AMENDED AND REFROZEN AFTER V4 RESULTS AND BEFORE ANY V5 20-PARTITION RESULT",
+  "frozen_utc": "2026-09-28T03:22:48Z",
+  "supersedes": null,
+  "extends": "anonymous-ablation-ufe-verification-v4",
+  "scientific_role": "standalone 20-partition exact-edge ablation analysis using the matched partition seeds; executed without input, pooling, or initialization from the earlier 10-partition results",
+  "revision_reason": "V5 runs the seven-configuration exact-edge Random Forest analysis from scratch on the 20 matched partition seeds 2001 through 2020. The earlier 10-partition v4 results are not inputs to this analysis and are not pooled with v5. Because v4 outcomes were already known when v5 was designed, the timing remains post outcome and is disclosed in provenance.",
+  "prior_information": {
+    "v4_results_observed": true,
+    "matched_results_on_seeds_2001_to_2020_observed": true,
+    "v5_results_observed_before_freeze": false,
+    "claim_boundary": "V5 is an independent execution but not an independent dataset or untouched confirmation: it reuses the same 2763 labeled EOAs and was designed after earlier outcomes were known."
+  },
+  "pre_execution_amendment": {
+    "reason": "Correct the reporting role of v4 and make the structurally zero EOA call-in dimensions explicit before any v5 result was generated.",
+    "previous_external_protocol_sha256": "8aaf9970f7756914c1a19c234bfb39fd876a86a00e58c0fc5e4648653fa3e851",
+    "v5_results_observed_before_amendment": false,
+    "analysis_plan_changed": false
+  },
+  "immutable_author_artifacts": {
+    "author_dataset_py_modified": false,
+    "author_data_pt_modified": false,
+    "heig_zip_sha256": "058272194c8fb37869ca3eebdcfc3b086d046337800777c4f468c0a86bc46b3a",
+    "phish_data_pt_sha256": "8cc653bb389ea1a316f72c3893d0487ab09321552ae022ceaa89cd2499f690e8"
+  },
+  "task": "static transductive binary node classification of labeled HEIG-Phish EOAs",
+  "primary_metric": "test Macro-F1 at threshold 0.5",
+  "secondary_metrics": [
+    "PR-AUC",
+    "precision",
+    "recall",
+    "binary-F1",
+    "micro-F1",
+    "FPR",
+    "MCC",
+    "fit time",
+    "inference time"
+  ],
+  "model": {
+    "name": "RandomForestClassifier",
+    "selection_timing": "selected after earlier project results were observed",
+    "reason": "RF+ was among the strongest observed Plus variants and permits direct feature-group ablation; this outcome-informed selection limits ablation conclusions to Random Forest.",
+    "search_space": [
+      {"n_estimators": 100, "max_depth": null},
+      {"n_estimators": 100, "max_depth": 10},
+      {"n_estimators": 200, "max_depth": null},
+      {"n_estimators": 200, "max_depth": 10},
+      {"n_estimators": 300, "max_depth": null},
+      {"n_estimators": 300, "max_depth": 10}
+    ],
+    "class_weight": null,
+    "min_samples_leaf": 1,
+    "model_seeds": [12, 13, 14, 15, 16],
+    "threshold": 0.5
+  },
+  "phish_ufe": {
+    "published_features": 14,
+    "added_features": 12,
+    "edge_feature_mode": "deterministic exact full-edge incident rows plus edge count and sum",
+    "random_neighbor_sampling": false,
+    "uses_labels": false,
+    "labels_not_used_during_aggregation": true,
+    "graph_scope": "static transductive full graph",
+    "transform": "log1p",
+    "order": [
+      "call_in_rows",
+      "call_out_rows",
+      "call_in_count",
+      "call_out_count",
+      "call_in_sum",
+      "call_out_sum",
+      "trans_in_rows",
+      "trans_out_rows",
+      "trans_in_count",
+      "trans_out_count",
+      "trans_in_sum",
+      "trans_out_sum"
+    ],
+    "trans_in_sum_full_feature_index_zero_based": 24,
+    "semantics": "Incoming values aggregate edges whose destination is the target EOA; outgoing values aggregate edges whose source is the target EOA. The released schema has no call edge ending at an EOA, so the three call-in dimensions are structurally zero for target EOAs.",
+    "structurally_zero_for_target_eoa": [
+      "call_in_rows",
+      "call_in_count",
+      "call_in_sum"
+    ],
+    "nonstructural_zero_dimension_count": 9,
+    "terminology_note": "UFE 12 denotes the twelve defined columns. For labeled EOA targets, three call-in columns are structural zeros, leaving nine columns capable of varying. Likewise, the eleven-column block that excludes trans_in_sum contains eight columns capable of varying."
+  },
+  "feature_configurations": [
+    "base14",
+    "ufe12_only",
+    "base14_ufe12",
+    "trans_in_sum_only",
+    "base14_trans_in_sum",
+    "base14_ufe11_without_trans_in_sum",
+    "base14_shuffled_ufe12"
+  ],
+  "shuffle_control": {
+    "unit": "whole 12-column UFE row vector",
+    "scope": "independently inside training, validation, and test partitions",
+    "within_class": false,
+    "repetitions": "one deterministic shuffle per partition seed",
+    "purpose": "preserve marginal distributions and within-block dependence while breaking node alignment"
+  },
+  "partitions": {
+    "method": "stratified random 60/20/20 over the same 2763 labeled EOAs",
+    "split_seeds": [
+      2001,
+      2002,
+      2003,
+      2004,
+      2005,
+      2006,
+      2007,
+      2008,
+      2009,
+      2010,
+      2011,
+      2012,
+      2013,
+      2014,
+      2015,
+      2016,
+      2017,
+      2018,
+      2019,
+      2020
+    ],
+    "counts_per_partition": {"train": 1657, "validation": 553, "test": 553},
+    "relation_to_matched": "same partition seeds and split construction as matched",
+    "external_holdout": false,
+    "temporal_holdout": false
+  },
+  "selection_policy": {
+    "scope": "hyperparameters are selected separately within each partition and each feature configuration",
+    "selected_on": "validation data only",
+    "selection_rule": "higher validation Macro-F1, then lower validation FPR, then higher validation PR-AUC, then lower configuration id",
+    "test_used_for_selection": false
+  },
+  "superiority_comparisons": [
+    {"left": "base14_ufe12", "right": "base14", "claim": "overall exact UFE contribution"},
+    {"left": "base14_trans_in_sum", "right": "base14", "claim": "single trans_in_sum contribution"},
+    {"left": "base14_ufe12", "right": "base14_trans_in_sum", "claim": "incremental contribution of the other eleven defined exact UFE statistics, eight of which can vary for target EOAs, conditional on trans_in_sum"},
+    {"left": "base14_ufe11_without_trans_in_sum", "right": "base14", "claim": "contribution of the other eleven defined exact UFE statistics, eight of which can vary for target EOAs, without trans_in_sum"}
+  ],
+  "equivalence_comparison": {
+    "left": "base14_shuffled_ufe12",
+    "right": "base14",
+    "margin_macro_f1": 0.005,
+    "test": "Nadeau-Bengio corrected two one-sided tests at alpha 0.05",
+    "decision_rule": "corrected 90 percent confidence interval entirely inside [-0.005, 0.005] and TOST p below 0.05"
+  },
+  "inference": {
+    "unit": "partition-level metric after averaging five model seeds",
+    "primary_test": "Nadeau-Bengio corrected resampled t-test using n_test/n_train = 553/1657",
+    "alpha": 0.05,
+    "degrees_of_freedom": 19,
+    "multiple_comparison_correction": "Holm across the four superiority comparisons only",
+    "minimum_practical_macro_f1_difference": 0.005,
+    "superiority_success_rule": "mean gain at least 0.005, corrected 95 percent confidence interval lower bound above zero, and Holm-adjusted p below 0.05",
+    "descriptive_outputs": "Wilcoxon and naive split bootstrap are reported but are not primary inference"
+  },
+  "reporting_commitment": {
+    "report_all_20_partitions": true,
+    "report_all_7_feature_configurations": true,
+    "report_all_4_superiority_comparisons": true,
+    "report_shuffle_equivalence_regardless_of_result": true,
+    "retain_v4_results": true,
+    "do_not_pool_v4_and_v5_post_hoc": true,
+    "v4_role": "preregistered 10-partition ablation analysis reported alongside v5",
+    "v5_role": "post-outcome supplementary 20-partition alignment analysis",
+    "allowed_label": "standalone supplementary 20-partition exact-edge ablation analysis designed after v4 and matched results were observed"
+  },
+  "change_control": "Any modification after any v5 test result is viewed requires a new protocol version. V4 remains the preregistered 10-partition ablation analysis and is reported alongside v5; it must never be pooled into the standalone v5 estimates."
+}

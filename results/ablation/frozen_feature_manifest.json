@@ -1,0 +1,27 @@
+{
+  "status": "FROZEN LABEL-FREE FEATURE MATRIX BEFORE RE-SPLITS",
+  "protocol_sha256": "1b3ace2c6d4f79c1b02fafa5be429fc137b1490999448254b0c7194dafa32b56",
+  "source_data_sha256": "8cc653bb389ea1a316f72c3893d0487ab09321552ae022ceaa89cd2499f690e8",
+  "ids_sha256": "7cdc6e0cc627180f505deed101ebc86ee8ac1916b623920bebf95cdf3cba4f53",
+  "features_sha256": "f035043c8f751761f4598139d36401acdbef40d518f1bd8bbf5c407046fbb826",
+  "labels_sha256": "42514cc5ca1f91c77497bfaa5a83a4e6e965e9d65c093cb726b56fc71e900054",
+  "feature_dimensions": 26,
+  "edge_feature_mode": "weighted12",
+  "ufe_names": [
+    "call_in_rows",
+    "call_out_rows",
+    "call_in_count",
+    "call_out_count",
+    "call_in_sum",
+    "call_out_sum",
+    "trans_in_rows",
+    "trans_out_rows",
+    "trans_in_count",
+    "trans_out_count",
+    "trans_in_sum",
+    "trans_out_sum"
+  ],
+  "ufe_uses_labels": false,
+  "materialization_scope": "all labeled nodes exact full-edge aggregation before splitting",
+  "random_neighbor_sampling_used": false
+}

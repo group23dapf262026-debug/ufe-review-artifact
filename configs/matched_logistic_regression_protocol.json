@@ -1,0 +1,95 @@
+{
+  "change_control": "Any modification after any V2.1.1 experimental result is viewed requires a new version; v1, unexecuted v2, setup-failed v2.1, v2.1.1, and later versions remain distinguishable.",
+  "code_sha256": "1dce6a3175686872af445287ce6d4c1c49f571611185045aa4c9e00541065156",
+  "configuration_origin": "frozen baseline winner selected on the paper validation split",
+  "implementation": {
+    "estimator": "StandardScaler + sklearn LogisticRegression",
+    "max_iter": 5000,
+    "solver": "liblinear"
+  },
+  "inference": {
+    "alpha": 0.05,
+    "df": 19,
+    "k": 20,
+    "minimum_practical_delta": 0.005,
+    "multiplicity": "Holm correction across the six primary model-pair p-values",
+    "success_rule": "mean delta >= 0.005, Nadeau-Bengio 95% CI lower bound > 0, and Holm-adjusted p < 0.05",
+    "test": "two-sided Nadeau-Bengio corrected resampled t-test on 20 split-level paired deltas",
+    "test_train_ratio": "553/1657"
+  },
+  "master_protocol_id": "anonymous-matched-all-six-matched-20split-replication-v2.1.1",
+  "master_protocol_sha256": "3c50b13557fc897d71787171b2a98be31b8784de4be6fbfa6932ab063ebd1145",
+  "matching_rule": "Within each pair and split, baseline and plus share the fixed configuration, train/validation/test node IDs, model seed, threshold, and materialized sampled batches/views. Plus differs only by receiving the 12-dimensional label-free UFE input/branch.",
+  "model_pair": {
+    "baseline": "LR",
+    "plus": "LR+"
+  },
+  "model_seeds": [
+    12,
+    13,
+    14,
+    15,
+    16
+  ],
+  "primary_metric": "test Macro-F1 at a fixed threshold of 0.5",
+  "protocol_id": "anonymous-matched-logistic_regression-matched-20split-replication-v2.1.1",
+  "reporting_commitment": {
+    "do_not_pool_v1_and_v2_1_1_post_hoc": true,
+    "limitations": [
+      "random re-splits reuse the same 2763 labeled nodes",
+      "not an external, temporal, or unseen-dataset holdout",
+      "PyG neighborhood sampling may differ across sessions, but variants within each pair reuse identical materialized inputs"
+    ],
+    "paper_comparison": "Use the already completed author/paper split as Table A. V2.1.1 is Table B replication and is not a direct numerical comparison with the paper table.",
+    "report_all_six_pairs": true,
+    "report_all_twenty_splits": true,
+    "report_v1_and_v2_1_1_separately": true
+  },
+  "selection_and_blinding": {
+    "configurations": "frozen from v1 validation decisions / official Meta-IFD default",
+    "early_termination_based_on_results": false,
+    "hyperparameter_tuning_in_v2_1_1": false,
+    "test_materialization": "after validation decisions/checkpoints are frozen within each split",
+    "threshold": 0.5
+  },
+  "shared_configuration": {
+    "C": 10.0,
+    "class_weight": null
+  },
+  "source_data_sha256": "8cc653bb389ea1a316f72c3893d0487ab09321552ae022ceaa89cd2499f690e8",
+  "split_method": "20 predetermined stratified random 60/20/20 splits over the same 2763 labeled EOA",
+  "split_seeds": [
+    2001,
+    2002,
+    2003,
+    2004,
+    2005,
+    2006,
+    2007,
+    2008,
+    2009,
+    2010,
+    2011,
+    2012,
+    2013,
+    2014,
+    2015,
+    2016,
+    2017,
+    2018,
+    2019,
+    2020
+  ],
+  "status": "FROZEN AFTER ALL V1 RESULTS; V2.1 SETUP BUG OBSERVED; BEFORE ANY V2.1.1 EXPERIMENTAL RESULT",
+  "ufe": {
+    "batch_size": 512,
+    "definition": "rows/count/sum x in/out x call/trans inside each sampled batch",
+    "dimensions": 12,
+    "fanout": [
+      100,
+      100
+    ],
+    "transform": "log1p",
+    "uses_labels": false
+  }
+}

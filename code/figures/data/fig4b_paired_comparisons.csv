@@ -1,0 +1,6 @@
+comparison,delta_pp,ci_lo,ci_hi,ci_level,test,decision
+Full UFE − Source 14,2.60,1.38,3.82,95,superiority,Pass
+Source + incoming value − Source 14,2.22,1.23,3.22,95,superiority,Pass
+Full UFE − Source + incoming value,0.38,-0.13,0.88,95,superiority,Does not pass
+Source + other 11 UFE − Source 14,1.60,0.85,2.34,95,superiority,Pass
+Shuffled UFE − Source 14,-0.06,-0.42,0.30,90,TOST (margin ±0.5 pp),Equivalent

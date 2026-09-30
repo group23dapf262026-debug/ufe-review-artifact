@@ -1,0 +1,175 @@
+{
+  "change_control": "Any modification after any V2.1.1 experimental result is viewed requires a new version; v1, unexecuted v2, setup-failed v2.1, v2.1.1, and later versions remain distinguishable.",
+  "dataset": {
+    "labeled_eoa": 2763,
+    "name": "HEIG-Phish author processed data.pt",
+    "negative": 1557,
+    "positive": 1206,
+    "scope": "the same labeled nodes as v1; this is stability evidence, not external or temporal generalization",
+    "source_data_sha256": "8cc653bb389ea1a316f72c3893d0487ab09321552ae022ceaa89cd2499f690e8"
+  },
+  "frozen_local_date": "2026-09-26",
+  "h2_cross_model_confirmatory": {
+    "comparator_rationale": "Meta-IFD baseline is the model proposed by the paper; Meta-IFD+ is a group-created extension and is not the primary H2 comparator",
+    "comparisons": {
+      "H2a": "RF+ minus Meta-IFD baseline",
+      "H2b": "LightGBM+ minus Meta-IFD baseline"
+    },
+    "cross_session_caveat": "the three models run in separate sessions; the aggregator must verify identical test-node sets and labels for every split before pairing, while neighborhood/UFE sampler realizations may still differ between sessions",
+    "estimator_and_ci": "Nadeau-Bengio corrected mean delta and two-sided 95% CI across the same 20 splits",
+    "h3_metaifd_plus": "not a confirmatory hypothesis in v2.1.1; comparisons with Meta-IFD+ may be reported as explicitly exploratory/descriptive",
+    "margin_rationale": "fixed before v2.1/v2.1.1 execution; a rounded conservative margin slightly above the upper Meta-IFD seed-to-seed variation observed in v1 (about 0.3–0.8 percentage points) and materially smaller than the UFE gains observed for the weaker baselines",
+    "margin_units": "absolute Macro-F1 (1 percentage point)",
+    "multiplicity": "Holm correction within H2a/H2b, reported for both non-inferiority and gated superiority",
+    "noninferiority_margin": -0.01,
+    "noninferiority_rule": "lower bound of the two-sided NB 95% CI > -0.01 and Holm-adjusted one-sided non-inferiority p < 0.025",
+    "question": "Are the simpler RF+ and LightGBM+ models non-inferior to the reproduced original Meta-IFD baseline, and if so are they superior?",
+    "superiority_gate": "evaluated only after non-inferiority passes; lower bound of the same NB 95% CI > 0 and Holm-adjusted one-sided superiority p < 0.025; alpha is not split",
+    "unit_of_analysis": "paired split-level delta after averaging five model seeds for each model"
+  },
+  "matching_rule": "Within each pair and split, baseline and plus share the fixed configuration, train/validation/test node IDs, model seed, threshold, and materialized sampled batches/views. Plus differs only by receiving the 12-dimensional label-free UFE input/branch.",
+  "model_pairs": [
+    "LR vs LR+",
+    "RF vs RF+",
+    "LightGBM vs LightGBM+",
+    "GAT-Norm vs GAT+",
+    "GraphSAGE-Norm vs GraphSAGE+",
+    "Meta-IFD vs Meta-IFD+"
+  ],
+  "model_seeds": [
+    12,
+    13,
+    14,
+    15,
+    16
+  ],
+  "patch_note": "v2.1.1 restores the flat Meta-IFD CONFIG aliases required by the unchanged audited training code; no hypothesis, split, seed, model, feature, threshold, or inference rule changed",
+  "planning_sensitivity_disclosure": {
+    "basis": "approximate planning calculations made from fully observed v1 effects/variability; not inferential results and not guarantees",
+    "interpretation": "v2.1.1 is informative even if Meta-IFD H1 or H2 superiority does not pass; all outcomes will be reported",
+    "metaifd_plus_vs_metaifd_h1": "for v1 delta about +0.85 percentage points, k=20 has approximate marginal power 0.63 under the NB variance assumption before global Holm; if Meta-IFD remains the largest p-value while the other five are much smaller as in v1, its Holm multiplier is one, otherwise effective power is lower",
+    "rf_plus_vs_metaifd_h2": "v1 suggested delta about +0.96 percentage points; approximate marginal non-inferiority power is about 0.9, while superiority power is below 0.5 (about 0.4); these are planning estimates before seeing v2.1.1"
+  },
+  "primary_inference": {
+    "alpha": 0.05,
+    "df": 19,
+    "k": 20,
+    "minimum_practical_delta": 0.005,
+    "multiplicity": "Holm correction across the six primary model-pair p-values",
+    "success_rule": "mean delta >= 0.005, Nadeau-Bengio 95% CI lower bound > 0, and Holm-adjusted p < 0.05",
+    "test": "two-sided Nadeau-Bengio corrected resampled t-test on 20 split-level paired deltas",
+    "test_train_ratio": "553/1657"
+  },
+  "primary_metric": "test Macro-F1 at a fixed threshold of 0.5",
+  "prior_evidence_disclosure": {
+    "interpretation": "v2.1.1 is not an extension stopped when significance is reached; all 20 new splits and all six pairs must be run and reported regardless of outcome",
+    "v1_split_seeds": [
+      101,
+      202,
+      303,
+      404,
+      505,
+      606,
+      707,
+      808,
+      909,
+      1010
+    ],
+    "v1_summary": {
+      "GAT": {
+        "delta_pp": 8.6535,
+        "raw_p": 0.000132628
+      },
+      "GraphSAGE": {
+        "delta_pp": 4.2423,
+        "raw_p": 0.00050094
+      },
+      "LightGBM": {
+        "delta_pp": 2.089,
+        "raw_p": 0.002347964
+      },
+      "Logistic Regression": {
+        "delta_pp": 6.1759,
+        "raw_p": 0.000293594
+      },
+      "Meta-IFD": {
+        "delta_pp": 0.8532,
+        "raw_p": 0.050025945
+      },
+      "Random Forest": {
+        "delta_pp": 2.062,
+        "raw_p": 0.001387833
+      }
+    },
+    "v1_was_fully_observed_before_v2_1_1": true
+  },
+  "protocol_id": "anonymous-matched-all-six-matched-20split-replication-v2.1.1",
+  "reporting_commitment": {
+    "do_not_pool_v1_and_v2_1_1_post_hoc": true,
+    "limitations": [
+      "random re-splits reuse the same 2763 labeled nodes",
+      "not an external, temporal, or unseen-dataset holdout",
+      "PyG neighborhood sampling may differ across sessions, but variants within each pair reuse identical materialized inputs"
+    ],
+    "paper_comparison": "Use the already completed author/paper split as Table A. V2.1.1 is Table B replication and is not a direct numerical comparison with the paper table.",
+    "report_all_six_pairs": true,
+    "report_all_twenty_splits": true,
+    "report_v1_and_v2_1_1_separately": true
+  },
+  "resampling": {
+    "counts_each_split": {
+      "test": 553,
+      "train": 1657,
+      "validation": 553
+    },
+    "metaifd_view_seeds": "train/validation/test = split_seed*10 + 4/5/6",
+    "method": "20 predetermined stratified random 60/20/20 splits over the same 2763 labeled EOA",
+    "sampler_seeds": "train/validation/test = split_seed*10 + 1/2/3",
+    "seed_choice_rationale": "a fixed transparent sequence of 20 new seeds, disjoint from v1, chosen before v2.1.1 execution; 20 is a computational-budget choice to estimate split variability more stably, not a data-dependent stopping point",
+    "split_seeds": [
+      2001,
+      2002,
+      2003,
+      2004,
+      2005,
+      2006,
+      2007,
+      2008,
+      2009,
+      2010,
+      2011,
+      2012,
+      2013,
+      2014,
+      2015,
+      2016,
+      2017,
+      2018,
+      2019,
+      2020
+    ]
+  },
+  "research_question": "Does adding the same 12 label-free UFE features improve each matched baseline across split variability?",
+  "scientific_role": "fixed-budget, outcome-independent replication of the six matched comparisons",
+  "selection_and_blinding": {
+    "configurations": "frozen from v1 validation decisions / official Meta-IFD default",
+    "early_termination_based_on_results": false,
+    "hyperparameter_tuning_in_v2_1_1": false,
+    "test_materialization": "after validation decisions/checkpoints are frozen within each split",
+    "threshold": 0.5
+  },
+  "status": "FROZEN AFTER ALL V1 RESULTS; V2.1 SETUP BUG OBSERVED; BEFORE ANY V2.1.1 EXPERIMENTAL RESULT",
+  "ufe": {
+    "batch_size": 512,
+    "definition": "rows/count/sum x in/out x call/trans inside each sampled batch",
+    "dimensions": 12,
+    "fanout": [
+      100,
+      100
+    ],
+    "transform": "log1p",
+    "uses_labels": false
+  },
+  "unit_of_analysis": "for each split: mean Macro-F1 over five model seeds; paired delta = plus minus baseline",
+  "version": "2.1.1"
+}

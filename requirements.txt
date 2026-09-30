@@ -1,0 +1,14 @@
+numpy
+pandas
+scipy
+scikit-learn
+joblib
+lightgbm
+matplotlib
+fonttools
+jupyter
+torch
+torch-geometric
+pyg-lib
+torch-scatter
+torch-sparse

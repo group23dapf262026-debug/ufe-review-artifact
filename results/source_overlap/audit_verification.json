@@ -1,0 +1,167 @@
+{
+  "outer_zip_sha256": "f0f585ff4b4522f8209909e3ed55edd0a6f250b74f4794e93b4907adab47b6f8",
+  "executed_notebook_sha256": "615711747d6b691f658bc5168c1a17ea9f6586babfdc34b31ff4d3aeaf4551ec",
+  "locked_notebook_sha256": "8a8f1d613d5692d9e42299d2972d71b5aa676d71dd0a3f29c3488743b8577b0a",
+  "notebook_code_and_markdown_match_locked": true,
+  "protocol_sha256": "bbb4bb8359a438a90e5b74ec95fefbf4cbf09001fe8d602a5bf01fc713a4e42c",
+  "manifest_entries_verified": 17,
+  "inner_zip_entries_verified": 17,
+  "pair_count": 168,
+  "candidate_count": 10,
+  "near_duplicate_count": 0,
+  "constant_pair_count": 60,
+  "constant_features": [
+    {
+      "block": "source14",
+      "feature": "V_inv_c",
+      "zero_fraction": 1.0,
+      "unique_values": 1
+    },
+    {
+      "block": "source14",
+      "feature": "N_inv_c",
+      "zero_fraction": 1.0,
+      "unique_values": 1
+    },
+    {
+      "block": "ufe12",
+      "feature": "call_in_edge_records",
+      "zero_fraction": 1.0,
+      "unique_values": 1
+    },
+    {
+      "block": "ufe12",
+      "feature": "call_in_edge_attr0_sum",
+      "zero_fraction": 1.0,
+      "unique_values": 1
+    },
+    {
+      "block": "ufe12",
+      "feature": "call_in_edge_attr1_sum",
+      "zero_fraction": 1.0,
+      "unique_values": 1
+    }
+  ],
+  "candidates": [
+    {
+      "source_feature": "N_return_c",
+      "ufe_feature": "call_out_edge_attr0_sum",
+      "ufe_project_alias": "call_out_count (unverified semantic alias)",
+      "pearson_signed_log1p": 0.9033876600955504,
+      "spearman_raw": 0.9500644041308388,
+      "equal_or_close_fraction": 0.8081447963800905,
+      "equal_or_close_excluding_both_zero": 0.4450261780104712,
+      "both_zero_fraction": 0.6542986425339367,
+      "near_duplicate": false,
+      "ranking_score": 0.9500644041308388
+    },
+    {
+      "source_feature": "N_return_c",
+      "ufe_feature": "call_out_edge_records",
+      "ufe_project_alias": "call_out_rows",
+      "pearson_signed_log1p": 0.8691557007275853,
+      "spearman_raw": 0.9448520355976022,
+      "equal_or_close_fraction": 0.7411764705882353,
+      "equal_or_close_excluding_both_zero": 0.2513089005235602,
+      "both_zero_fraction": 0.6542986425339367,
+      "near_duplicate": false,
+      "ranking_score": 0.9448520355976022
+    },
+    {
+      "source_feature": "V_meaninv_c",
+      "ufe_feature": "call_out_edge_records",
+      "ufe_project_alias": "call_out_rows",
+      "pearson_signed_log1p": -0.7430945706802105,
+      "spearman_raw": -0.9135232920194516,
+      "equal_or_close_fraction": 0.6542986425339367,
+      "equal_or_close_excluding_both_zero": 0.0,
+      "both_zero_fraction": 0.6542986425339367,
+      "near_duplicate": false,
+      "ranking_score": 0.9135232920194516
+    },
+    {
+      "source_feature": "V_meaninv_c",
+      "ufe_feature": "call_out_edge_attr0_sum",
+      "ufe_project_alias": "call_out_count (unverified semantic alias)",
+      "pearson_signed_log1p": -0.7568270187087716,
+      "spearman_raw": -0.9129916006451406,
+      "equal_or_close_fraction": 0.6542986425339367,
+      "equal_or_close_excluding_both_zero": 0.0,
+      "both_zero_fraction": 0.6542986425339367,
+      "near_duplicate": false,
+      "ranking_score": 0.9129916006451406
+    },
+    {
+      "source_feature": "V_inv_t",
+      "ufe_feature": "trans_in_edge_attr1_sum",
+      "ufe_project_alias": "trans_in_sum",
+      "pearson_signed_log1p": 0.9054821205070316,
+      "spearman_raw": 0.8946223021115733,
+      "equal_or_close_fraction": 0.4588235294117647,
+      "equal_or_close_excluding_both_zero": 0.454876937101185,
+      "both_zero_fraction": 0.0072398190045248,
+      "near_duplicate": false,
+      "ranking_score": 0.9054821205070316
+    },
+    {
+      "source_feature": "V_return_c",
+      "ufe_feature": "call_out_edge_attr1_sum",
+      "ufe_project_alias": "call_out_sum",
+      "pearson_signed_log1p": 0.8648636376946335,
+      "spearman_raw": 0.8874857720889842,
+      "equal_or_close_fraction": 0.932579185520362,
+      "equal_or_close_excluding_both_zero": 0.5895316804407713,
+      "both_zero_fraction": 0.8357466063348417,
+      "near_duplicate": false,
+      "ranking_score": 0.8874857720889842
+    },
+    {
+      "source_feature": "bal_c",
+      "ufe_feature": "call_out_edge_attr1_sum",
+      "ufe_project_alias": "call_out_sum",
+      "pearson_signed_log1p": -0.8648636376946335,
+      "spearman_raw": -0.8874857720889842,
+      "equal_or_close_fraction": 0.8357466063348417,
+      "equal_or_close_excluding_both_zero": 0.0,
+      "both_zero_fraction": 0.8357466063348417,
+      "near_duplicate": false,
+      "ranking_score": 0.8874857720889842
+    },
+    {
+      "source_feature": "V_meanreturn_c",
+      "ufe_feature": "call_out_edge_attr1_sum",
+      "ufe_project_alias": "call_out_sum",
+      "pearson_signed_log1p": 0.8333311653010228,
+      "spearman_raw": 0.8859970769491019,
+      "equal_or_close_fraction": 0.8574660633484162,
+      "equal_or_close_excluding_both_zero": 0.1322314049586777,
+      "both_zero_fraction": 0.8357466063348417,
+      "near_duplicate": false,
+      "ranking_score": 0.8859970769491019
+    },
+    {
+      "source_feature": "V_meaninv_t",
+      "ufe_feature": "trans_in_edge_attr1_sum",
+      "ufe_project_alias": "trans_in_sum",
+      "pearson_signed_log1p": 0.8625485867385214,
+      "spearman_raw": 0.8462337663928148,
+      "equal_or_close_fraction": 0.0791855203619909,
+      "equal_or_close_excluding_both_zero": 0.0791855203619909,
+      "both_zero_fraction": 0.0,
+      "near_duplicate": false,
+      "ranking_score": 0.8625485867385214
+    },
+    {
+      "source_feature": "N_inv_t",
+      "ufe_feature": "trans_in_edge_attr0_sum",
+      "ufe_project_alias": "trans_in_count (unverified semantic alias)",
+      "pearson_signed_log1p": 0.6971944567969455,
+      "spearman_raw": 0.7966769000417105,
+      "equal_or_close_fraction": 0.4461538461538462,
+      "equal_or_close_excluding_both_zero": 0.4421148587055606,
+      "both_zero_fraction": 0.0072398190045248,
+      "near_duplicate": false,
+      "ranking_score": 0.7966769000417105
+    }
+  ]
+}

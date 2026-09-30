@@ -1,0 +1,48 @@
+{
+  "status": "completed post-hoc train-and-validation-only 14-by-12 overlap audit",
+  "protocol_sha256": "bbb4bb8359a438a90e5b74ec95fefbf4cbf09001fe8d602a5bf01fc713a4e42c",
+  "source_data_sha256": "8cc653bb389ea1a316f72c3893d0487ab09321552ae022ceaa89cd2499f690e8",
+  "development_node_count": 2210,
+  "normal_node_count": 1245,
+  "phishing_node_count": 965,
+  "pair_count": 168,
+  "candidate_overlap_count": 10,
+  "constant_or_structurally_zero_pair_count": 60,
+  "constant_source_features": [
+    "V_inv_c",
+    "N_inv_c"
+  ],
+  "constant_ufe_features": [
+    "call_in_edge_records",
+    "call_in_edge_attr0_sum",
+    "call_in_edge_attr1_sum"
+  ],
+  "established_trans_in_sum_vs_V_inv_t": {
+    "source_index": 8,
+    "source_feature": "V_inv_t",
+    "ufe_index": 10,
+    "ufe_feature": "trans_in_edge_attr1_sum",
+    "ufe_project_alias": "trans_in_sum",
+    "pearson_signed_log1p": 0.9054821205070315,
+    "spearman_raw": 0.8946223021115733,
+    "equal_or_close_fraction": 0.4588235294117647,
+    "equal_or_close_excluding_both_zero": 0.45487693710118504,
+    "both_zero_fraction": 0.007239819004524887,
+    "source_zero_fraction": 0.00904977375565611,
+    "ufe_zero_fraction": 0.007239819004524887,
+    "median_absolute_raw_difference": 1.252609512482195,
+    "mean_absolute_raw_difference": 3534.9303039158312,
+    "contains_constant_feature": false,
+    "pair_class": "candidate_overlap",
+    "candidate_overlap": true,
+    "near_duplicate": false,
+    "ranking_score": 0.9054821205070315
+  },
+  "development_ids_sha256": "d7f1d839bf30e5f9cf545acfbfd5ed0d05812909fa121fcea01bb2a52736ee7e",
+  "source14_sha256": "5294ccefd7fa5ef19a9ee096b7c3b4c6955c0289cd774a775dd33d5a3510ef41",
+  "ufe12_raw_sha256": "f6b238b9e838b4a07346bb69e13ee10de9f4fde6b32f37efc98c013a9b0853b1",
+  "materialization_seconds": 1.3461609260000102,
+  "test_labels_accessed": false,
+  "test_features_sliced_or_analyzed": false,
+  "interpretation": "Exploratory descriptive provenance audit. Correlation and equality do not prove identical upstream construction, causality, or leakage."
+}

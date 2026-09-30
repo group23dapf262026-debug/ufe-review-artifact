@@ -1,0 +1,11 @@
+{
+  "left": "base14_shuffled_ufe12",
+  "right": "base14",
+  "margin": 0.005,
+  "mean_macro_f1_delta": -0.0005459328419565202,
+  "nadeau_bengio_corrected_se": 0.0025284974516777722,
+  "tost_p_lower": 0.047114870829552694,
+  "tost_p_upper": 0.020462058036592,
+  "tost_p": 0.047114870829552694,
+  "equivalent": true
+}

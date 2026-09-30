@@ -1,0 +1,7 @@
+configuration,mean,sd,kind
+Source 14,96.10,0.87,source
+UFE 12 only,98.68,0.60,ufe
+Source 14 + UFE 12,98.70,0.74,ufe
+Source + incoming transfer value,98.32,0.72,ufe
+Source + other 11 UFE,97.69,0.85,ufe
+Source + shuffled UFE,96.04,0.80,shuffled

@@ -1,0 +1,23 @@
+__pycache__/
+*.py[cod]
+*.log
+*.tmp
+.ipynb_checkpoints/
+.DS_Store
+
+# Large external data and generated training artifacts
+data.pt
+*.pt
+*.pth
+*.pkl
+*.joblib
+*.npz
+checkpoints/
+outputs/
+runs/
+tmp_figure_check/
+
+# Local environments
+.venv/
+venv/
+env/
